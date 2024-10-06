@@ -47,4 +47,6 @@ Typical directory structure of a `Debian package`
                 `-- <package-binary>
 ```
 
-<h4><a href="Contributing.md">Click here</a> if you want to know how I built it, or you want to contribute ❤️</h4>
+-------------
+
+<div align="center"><h4><a href="Contributing.md">Click here</a> if you want to know how I built it, or you want to contribute ❤️</h4></div>
