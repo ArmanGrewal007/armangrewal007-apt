@@ -31,3 +31,18 @@ git clone git@github.com:ArmanGrewal007/armangrewal007-apt.git
 
 ### 3. Publishing to deb repo
 Deb repo is at `https://www.github.com/ArmanGrewal007/debian_arman`
+
+
+### 4. This repo was getting to large, so here is a fix 
+
+```bash
+du -sh .git # More than 150<b
+# Unstages all changes while preserving working directory
+git reset --soft $(git rev-list --max-parents=0 HEAD)
+git commit -m "Pushed all commits to one"
+git push origin master --force
+# Remove all old reflog entries and unnecessary files
+git reflog expire --expire=now --all
+git gc --prune=now --aggressive
+du -sh .git # 32Mb only
+```
