@@ -4,6 +4,10 @@
   (This GIF demonstrates version <code>v0.1.3</code> running on an <code>aarch64</code> Docker container, along with another Docker container acting as a Debian repository hosting the package. <a href="https://www.github.com/ArmanGrewal007/debian_arman">Link to my debian repository</a>)
 </div>
 
+-------------
+
+<div align="center"><h4><a href="Contributing.md">Click here</a> if you want to know how I built it, or you want to contribute ❤️</h4></div>
+
 
 ## Steps to install
 
@@ -47,6 +51,4 @@ Typical directory structure of a `Debian package`
                 `-- <package-binary>
 ```
 
--------------
 
-<div align="center"><h4><a href="Contributing.md">Click here</a> if you want to know how I built it, or you want to contribute ❤️</h4></div>
