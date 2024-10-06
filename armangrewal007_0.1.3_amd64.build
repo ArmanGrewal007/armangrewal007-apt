@@ -1,0 +1,65 @@
+ dpkg-buildpackage -us -uc -ui
+dpkg-buildpackage: info: source package armangrewal007
+dpkg-buildpackage: info: source version 0.1.3
+dpkg-buildpackage: info: source distribution UNRELEASED
+dpkg-buildpackage: info: source changed by Arman Grewal <armansinghgrewal@gmail.com>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ debian/rules clean
+dh clean
+   dh_clean
+ dpkg-source -b .
+dpkg-source: warning: non-native package version does not contain a revision
+dpkg-source: info: using source format '3.0 (quilt)'
+dpkg-source: info: building armangrewal007 using existing ./armangrewal007_0.1.3.orig.tar.gz
+dpkg-source: info: building armangrewal007 in armangrewal007_0.1.3.debian.tar.xz
+dpkg-source: info: building armangrewal007 in armangrewal007_0.1.3.dsc
+ debian/rules build
+dh build
+   dh_update_autotools_config
+   dh_autoreconf
+   create-stamp debian/debhelper-build-stamp
+ debian/rules binary
+dh binary
+   dh_testroot
+   dh_prep
+   debian/rules override_dh_auto_install
+make[1]: Entering directory '/home/arman/armangrewal007-apt/armangrewal007-0.1.3'
+mkdir -p /home/arman/armangrewal007-apt/armangrewal007-0.1.3/debian/armangrewal007/usr/bin
+install -m 755 usr/bin_x86_64/armangrewal007 /home/arman/armangrewal007-apt/armangrewal007-0.1.3/debian/armangrewal007/usr/bin/armangrewal007
+make[1]: Leaving directory '/home/arman/armangrewal007-apt/armangrewal007-0.1.3'
+   dh_installdocs
+   dh_installchangelogs
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_missing
+   dh_dwz
+dwz: debian/armangrewal007/usr/bin/armangrewal007: .debug_info section not present
+   dh_strip
+   dh_makeshlibs
+   dh_shlibdeps
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/armangrewal007/usr/bin/armangrewal007 was not linked against libdl.so.2 (it uses none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/armangrewal007/usr/bin/armangrewal007 was not linked against libpthread.so.0 (it uses none of the library's symbols)
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: building package 'armangrewal007' in '../armangrewal007_0.1.3_amd64.deb'.
+ dpkg-genbuildinfo -O../armangrewal007_0.1.3_amd64.buildinfo
+ dpkg-genchanges -O../armangrewal007_0.1.3_amd64.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: full upload (original source is included)
+Now running lintian armangrewal007_0.1.3_amd64.changes ...
+running with root privileges is not recommended!
+E: armangrewal007 source: malformed-debian-changelog-version 0.1.3 (for non-native) [debian/changelog:1]
+E: armangrewal007 source: source-is-missing [usr/bin_aarch64/armangrewal007.bin]
+E: armangrewal007 source: source-is-missing [usr/bin_aarch64/armangrewal007]
+E: armangrewal007 source: source-is-missing [usr/bin_x86_64/armangrewal007.bin]
+E: armangrewal007 source: source-is-missing [usr/bin_x86_64/armangrewal007]
+W: armangrewal007: hardening-no-pie [usr/bin/armangrewal007]
+W: armangrewal007: no-manual-page [usr/bin/armangrewal007]
+Finished running lintian.

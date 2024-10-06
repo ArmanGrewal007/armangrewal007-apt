@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	mkdir -p $(CURDIR)/debian/armangrewal007/usr/bin
+ifeq ($(DEB_HOST_ARCH),amd64)
+	install -m 755 usr/bin_x86_64/armangrewal007 $(CURDIR)/debian/armangrewal007/usr/bin/armangrewal007
+else ifeq ($(DEB_HOST_ARCH),arm64)
+	install -m 755 usr/bin_aarch64/armangrewal007 $(CURDIR)/debian/armangrewal007/usr/bin/armangrewal007
+endif
+

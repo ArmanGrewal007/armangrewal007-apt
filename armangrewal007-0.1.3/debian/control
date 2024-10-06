@@ -1,0 +1,13 @@
+Source: armangrewal007
+Section: misc
+Priority: optional
+Maintainer: Arman Singh Grewal <armancode4u@gmail.com>
+Build-Depends: debhelper (>= 12)
+Standards-Version: 4.5.0
+
+Package: armangrewal007
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: CLI tool to display resume of Arman Singh Grewal
+ A simple CLI to display the resume.
+

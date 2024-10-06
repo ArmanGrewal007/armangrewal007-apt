@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # 7 minutes to start (mac M1)
+  amd64-Ubuntu:
+    image: ubuntu:amd64
+    container_name: amd64-Ubuntu
+    platform: linux/amd64
+    ports:
+      - "8000:8000"
+    command: >
+      /bin/bash -c '
+      if [ ! -f /root/.ssh/id_rsa ]; then
+        apt-get update && \
+        apt-get install -y build-essential devscripts debhelper jq vim tree sudo apt-utils &&
+        apt-get install -y dh-python python3-all python3-dev patchelf python3-venv && \
+        # apt-get install -y openssh-client openssh-server && \
+        mkdir -p /root/.ssh && \
+        ssh-keygen -t rsa -b 4096 -N "" -f /root/.ssh/id_rsa && \
+        eval $(ssh-agent -s) && \
+        ssh-add /root/.ssh/id_rsa;
+        useradd -m -s /bin/bash -c "Arman Grewal" -p $(openssl passwd -1 arman) arman && \
+        usermod -aG sudo arman && \
+        su - arman -c "
+        mkdir -p ~/.ssh && \
+        ssh-keygen -t rsa -b 4096 -N \"\" -f ~/.ssh/id_rsa && \
+        eval $(ssh-agent -s) && \
+        ssh-add ~/.ssh/id_rsa
+        "
+      fi;
+      sleep infinity
+      '  
+
+  # 2 minutes to start (mac M1)
+  arm64-Ubuntu:
+    image: ubuntu:arm64
+    container_name: arm64-Ubuntu
+    platform: linux/arm64
+    ports:
+      - "8000:8000"
+    command: >
+      /bin/bash -c '
+      if [ ! -f /root/.ssh/id_rsa ]; then
+        apt-get update && \
+        apt-get install -y build-essential devscripts debhelper jq vim tree sudo apt-utils &&
+        apt-get install -y dh-python python3-all python3-dev patchelf python3-venv && \
+        # apt-get install -y openssh-client openssh-server && \
+        mkdir -p /root/.ssh && \
+        ssh-keygen -t rsa -b 4096 -N "" -f /root/.ssh/id_rsa && \
+        eval $(ssh-agent -s) && \
+        ssh-add /root/.ssh/id_rsa;
+        useradd -m -s /bin/bash -c "Arman Grewal" -p $(openssl passwd -1 arman) arman && \
+        usermod -aG sudo arman && \
+        su - arman -c "
+        mkdir -p ~/.ssh && \
+        ssh-keygen -t rsa -b 4096 -N \"\" -f ~/.ssh/id_rsa && \
+        eval $(ssh-agent -s) && \
+        ssh-add ~/.ssh/id_rsa
+        "
+      fi;
+      sleep infinity
+      '  
+
+# volumes:
+#   ssh-volume-amd64:
+#   ssh-volume-arm64:
+
+
+# Add .ssh keys for user arman
+# git clone using user arman
+# Set up DEBEMAIL and run dh command to generate changelog
+# Make the changes, required
+# build the package as user arman
+# dpkg -L to check if the package is installed correctlly or not (binary must be there)

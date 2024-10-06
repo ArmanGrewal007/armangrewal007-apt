@@ -1,0 +1,17 @@
+venv/
+
+*.tar.gz
+*.tar.xz
+
+## Compiled files
+*.buildinfo
+*.changes
+*.dsc
+files
+.substvars
+*/debian/*.substvars
+*/debian/armangrewal007/
+
+## Deb helper files
+.debhelper/
+debhelper-build-stamp
